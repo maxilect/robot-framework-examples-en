@@ -1,9 +1,11 @@
-# Установка
+# Install
 
-Необходимо установить python3.
+Install [python3](https://www.python.org/).
 
-Затем выполнить `pip install -r requirements.txt`
+Execute `pip install -r requirements.txt`
 
-# Запуск тестов
+# Tests run
 
-`run.bat` -- запускает все тесты из папки tests, складывая результаты в папку output. Тэг Known указан как не-критичный.
+`run.bat` -- executes all tests from tests folder. 
+Results are stored in the output folder. 
+"Known" tag is marked as non-critical.
