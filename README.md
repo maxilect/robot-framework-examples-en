@@ -6,6 +6,6 @@ Execute `pip install -r requirements.txt`
 
 # Tests run
 
-`run.bat` -- executes all tests from tests folder. \
-Results are stored in the output folder. \
-"Known" tag is marked as non-critical.\
+* `run.bat` -- executes all tests from tests folder. \
+* Results are stored in the output folder. \
+* "Known" tag is marked as non-critical.
