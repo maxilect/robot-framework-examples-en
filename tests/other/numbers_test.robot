@@ -1,44 +1,44 @@
 *** Settings ***
-Documentation       Пример работы с python из Robot Framework.
+Documentation       Robot Framework from python.
 Library             libraries.ArrayGeneratorLibrary
 
 *** Test Cases ***
-Работа с библиотекой, написанной на python.
-    ${array}        Генерировать массив чисел    ${5}    ${2}    ${8}
+Example of python lib usage.
+    ${array}        Generate numbers array    ${5}    ${2}    ${8}
     Log to console    ${array}
 
-Пример обёртки и метода со встроенными аргументами.
-    ${array}        Сгенерировать 5 чисел, от 2 до 8
+Method wrapper with nested parameters.
+    ${array}        Generate 5 numbers, from 2 to 8
     Log to console    ${array}
 
-Пример передачи части названия метода, в виде параметра. Цикл.
+Pass the part of method name as parameter. Loop.
     ${types}        Create list    чётные    нечётные
-    ${array}        Сгенерировать 5 чисел, от 12 до 28
+    ${array}        Generate 5 numbers, from 12 to 28
     FOR   ${type}   IN    @{types}
-        ${numbers}      Run keyword    Найти ${type} числа в списке    ${array}
+        ${numbers}      Run keyword    Find ${type} numbers in list    ${array}
         log to console     ${numbers}
     END
 
-Пример декоратора метода
-    ${negs}         Найти отрицательные числа в ответе, вызвав  Генерировать массив чисел  10  -5  5
+Decorator example
+    ${negs}         Find negatives by calling  Generate numbers array  10  -5  5
     log to console  ${negs}
 
 *** Keywords ***
-Найти чётные числа в списке
+Find чётные numbers in list
     [Arguments]     ${list}
     ${evens}        Evaluate    [i for i in $list if i % 2 == 0]
     [Return]        ${evens}
 
-Найти нечётные числа в списке
+Find нечётные numbers in list
     [Arguments]     ${list}
     ${odds}         Evaluate    [i for i in $list if i % 2 != 0]
     [Return]        ${odds}
 
-Сгенерировать ${n} чисел, от ${from} до ${to}
-    ${result}       Генерировать массив чисел    ${n}    ${from}    ${to}
+Generate ${n} numbers, from ${from} to ${to}
+    ${result}       Generate numbers array    ${n}    ${from}    ${to}
     [Return]        ${result}
 
-Найти отрицательные числа в ответе, вызвав
+Find negatives by calling
     [Arguments]     ${keyword}    @{args}   &{kwargs}
     ${list}         Run keyword    ${keyword}    @{args}    &{kwargs}
     ${negs}         Evaluate    [i for i in $list if i < 0]

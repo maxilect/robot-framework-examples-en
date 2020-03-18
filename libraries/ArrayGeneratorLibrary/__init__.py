@@ -7,7 +7,7 @@ from robot.api.deco import keyword
 class ArrayGeneratorLibrary:
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
 
-    @keyword("Генерировать массив чисел")
+    @keyword("Generate numbers array")
     def generate_array(self, length: int, minimal: int, maximal: int) -> List[int]:
         result = []
         for i in range(int(length)):
