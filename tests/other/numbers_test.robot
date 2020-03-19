@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation       Robot Framework from python.
+Documentation       Robot Framework with python.
 Library             libraries.ArrayGeneratorLibrary
 
 *** Test Cases ***
@@ -11,8 +11,8 @@ Method wrapper with nested parameters.
     ${array}        Generate 5 numbers, from 2 to 8
     Log to console    ${array}
 
-Pass the part of method name as parameter. Loop.
-    ${types}        Create list    чётные    нечётные
+Pass the part of the method name as parameter. Loop.
+    ${types}        Create list    even    odd
     ${array}        Generate 5 numbers, from 12 to 28
     FOR   ${type}   IN    @{types}
         ${numbers}      Run keyword    Find ${type} numbers in list    ${array}
@@ -20,16 +20,16 @@ Pass the part of method name as parameter. Loop.
     END
 
 Decorator example
-    ${negs}         Find negatives by calling  Generate numbers array  10  -5  5
+    ${negs}         Find negatives in the response by calling  Generate numbers array  10  -5  5
     log to console  ${negs}
 
 *** Keywords ***
-Find чётные numbers in list
+Find even numbers in list
     [Arguments]     ${list}
     ${evens}        Evaluate    [i for i in $list if i % 2 == 0]
     [Return]        ${evens}
 
-Find нечётные numbers in list
+Find odd numbers in list
     [Arguments]     ${list}
     ${odds}         Evaluate    [i for i in $list if i % 2 != 0]
     [Return]        ${odds}
@@ -38,8 +38,14 @@ Generate ${n} numbers, from ${from} to ${to}
     ${result}       Generate numbers array    ${n}    ${from}    ${to}
     [Return]        ${result}
 
-Find negatives by calling
+Find negatives in the response by calling
     [Arguments]     ${keyword}    @{args}   &{kwargs}
     ${list}         Run keyword    ${keyword}    @{args}    &{kwargs}
     ${negs}         Evaluate    [i for i in $list if i < 0]
     [Return]        ${negs}
+
+
+
+
+
+
